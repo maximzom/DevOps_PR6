@@ -1,0 +1,13 @@
+services:
+  web:
+    image: devops-service:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: devops_service_app
+    ports:
+      - "${APP_PORT:-5000}:5000"
+    environment:
+      - APP_PORT=${APP_PORT:-5000}
+      - APP_VERSION=${APP_VERSION:-1.0.0}
+    restart: unless-stopped
