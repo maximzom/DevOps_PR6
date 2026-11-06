@@ -11,7 +11,7 @@ def client():
 def test_health_default_ok(client, monkeypatch):
     monkeypatch.setenv("APP_STATUS", "OK")
     response = client.get("/health")
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.get_json() == {"status": "healthy"}
 
 @pytest.mark.parametrize("bad_status", ["ERROR", "BROKEN", "MAINTENANCE", "FAIL"])
