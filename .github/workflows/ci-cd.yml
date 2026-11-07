@@ -81,7 +81,7 @@ jobs:
 
       - name: Deploy, Run Healthcheck, Testinfra & Handle Rollback
         run: |
-          echo "🚀 Розгортання образу devops-service:${CURR_SHA}..."
+          echo "Розгортання образу devops-service:${CURR_SHA}..."
           IMAGE_TAG=${CURR_SHA} docker compose up -d
 
           check_health() {
@@ -105,7 +105,7 @@ jobs:
             echo "Помилка: /health не відповідає або повернув помилку для версії ${CURR_SHA}!"
             DEPLOY_FAILED=1
           else
-            echo "🔍 Запуск інфраструктурних тестів Testinfra..."
+            echo "Запуск інфраструктурних тестів Testinfra..."
             if ! pytest --hosts=docker://devops_service_app tests/test_infra.py -v --junitxml=reports/testinfra-current.xml; then
               echo "Помилка: інфраструктурні тести Testinfra не пройшли!"
               DEPLOY_FAILED=1
