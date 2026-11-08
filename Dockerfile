@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Створення користувача без прав root
 RUN useradd -m -u 10001 -s /bin/bash appuser
 
 WORKDIR /app
